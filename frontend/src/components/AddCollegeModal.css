@@ -1,0 +1,82 @@
+/* AddCollegeModal.css */
+
+.modal-overlay-AddCollegeModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.modal-content-AddCollegeModal {
+    background: #fff; /* White background for the modal */
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Maximum width */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    position: relative;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333; /* Dark text color */
+    text-align: center; /* Center the heading */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between fields */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Make labels bold */
+    color: #555; /* Gray color for labels */
+}
+
+input,
+select {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Inner padding */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    color: #333; /* Dark text color */
+}
+
+input:focus,
+select:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove outline */
+}
+
+button {
+    background: #007bff; /* Primary button color */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px; /* Button padding */
+    font-size: 16px; /* Button text size */
+    cursor: pointer; /* Pointer cursor */
+    transition: background 0.3s; /* Smooth background transition */
+}
+
+button:hover {
+    background: #0056b3; /* Darker blue on hover */
+}
+
+button[type="button"] {
+    background: #ccc; /* Gray for cancel button */
+    margin-left: 10px; /* Space between buttons */
+}
+
+button[type="button"]:hover {
+    background: #bbb; /* Darker gray on hover */
+}

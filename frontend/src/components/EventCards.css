@@ -1,34 +1,39 @@
 .card {
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 300px; /* Width of the card */
+  height: 400px; /* Height of the card */
   margin: 20px;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Ensure no overflow outside the card */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
   transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.card__image {
+.card__image-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-size: cover;      /* Ensure image covers the entire card area */
-  background-position: center; /* Center image within the card */
-  border-radius: 10px;
+  height: 100%; /* Full height of the card */
+  overflow: hidden; /* Hide overflow to ensure no cropping */
+}
+
+.card__image {
+  width: 100%; /* Image width to fill the container */
+  height: 100%; /* Image height to fill the container */
+  object-fit: cover; /* Maintain aspect ratio while covering the area */
+  transition: transform 0.5s; /* Transition for hover effect */
 }
 
 .card__content {
   position: absolute;
-  bottom: 0;
+  bottom: 0; /* Position content at the bottom */
   left: 0;
   width: 100%;
   padding: 20px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
   transform: translateY(100%); /* Start hidden by moving content down */
-  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); /* Transition for sliding effect */
 }
 
 .card__title {
@@ -46,10 +51,10 @@
 .card__button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
+  background-color: #000; /* Background color of the button */
+  color: #fff; /* Text color of the button */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners for the button */
 }
 
 /* Hover effect */
@@ -58,5 +63,5 @@
 }
 
 .card:hover .card__image {
-  transform: scale(1.05); /* Slight zoom for the image */
+  transform: scale(1.05); /* Slight zoom for the image on hover */
 }

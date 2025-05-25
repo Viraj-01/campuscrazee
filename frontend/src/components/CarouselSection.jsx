@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -6,23 +6,32 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import './CarouselSection.css';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import axios from 'axios'; // Import axios to make API calls
 
-export default function App() {
+export default function CarouselSection() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [events, setEvents] = useState([]); // State to hold the events data
 
-  const bgImages = [
-    'url("/img11.jpg")',
-    'url("/img22.jpg")',
-    'url("/img33.jpg")',
-    'url("/img44.jpg")',
-  ];
+  useEffect(() => {
+    // Fetch events data from the server
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/events/get-events'); // Adjust the API endpoint as needed
+        setEvents(response.data); // Set the events data to state
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   return (
     <div
       className="carousel-container"
       style={{
-        backgroundImage: bgImages[activeIndex],
+        backgroundImage: events.length > 0 ? `url("${events[activeIndex].image2}")` : 'none', // Use image 2 from the active event
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -32,11 +41,13 @@ export default function App() {
       }}
     >
       {/* Main content overlay */}
-      <div className="content-overlay">
-        <h1 className="main-title">EVENT NAME</h1>
-        <p className="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, corporis. Reiciendis, beatae earum. Dolorum quidem maiores laborum fugit quae cumque.</p>
-        <button className="cta-button">SEE MORE</button>
-      </div>
+      {events.length > 0 && (
+        <div className="content-overlay">
+          <h1 className="main-title">{events[activeIndex].name}</h1>
+          <p className="description">{events[activeIndex].description}</p>
+          <button className="cta-button">SEE MORE</button>
+        </div>
+      )}
 
       {/* Main Swiper */}
       <Swiper
@@ -52,15 +63,11 @@ export default function App() {
         className="mySwiper2"
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
       >
-        {/* Background images are applied directly through the bgImages array, no need for image tags */}
-        <SwiperSlide>
-        </SwiperSlide>
-        <SwiperSlide>
-        </SwiperSlide>
-        <SwiperSlide>
-        </SwiperSlide>
-        <SwiperSlide>
-        </SwiperSlide>
+        {events.map((event, index) => (
+          <SwiperSlide key={event._id}>
+            {/* You can leave this empty or add some content if needed */}
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       {/* Thumbnails Swiper */}
@@ -74,35 +81,15 @@ export default function App() {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="/img11.jpg" alt="Thumbnail 1" />
+        {events.map((event) => (
+          <SwiperSlide key={event._id}>
+            <img src={event.image2} alt={event.name} />
             <div className="slide-content">
-              <p className="slide-name">Slider 1</p>
+              <p className="slide-name">{event.name}</p>
             </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/img22.jpg" alt="Thumbnail 2" />
-            <div className="slide-content">
-              <p className="slide-name">Slider 2</p>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/img33.jpg" alt="Thumbnail 3" />
-            <div className="slide-content">
-              <p className="slide-name">Slider 3</p>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/img44.jpg" alt="Thumbnail 4" />
-            <div className="slide-content">
-              <p className="slide-name">Slider 4</p>
-            </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
-
-      {/* Custom Navigation Buttons */}
-      {/* <div className="swiper-button-prev custom-arrow">←</div>
-      <div className="swiper-button-next custom-arrow">→</div> */}
     </div>
   );
 }

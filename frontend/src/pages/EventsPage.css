@@ -1,0 +1,32 @@
+.events-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Change from 100vh to auto to fit content */
+    padding: 40px; /* Adjust as necessary */
+    padding-top: 100px; /* Add padding equal to the height of the navbar */
+    background-color: #f4f4f4; /* Optional: set a background color */
+    text-align: center;
+    background: #A0A0A0; /* Change this if necessary */
+}
+
+.events-page h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    width: 100%;                   /* Make sure grid takes full width */
+    max-width: 1200px;             /* Optional: limit max width */
+}
+
+/* Optional: Add styles for Card component if needed */
+.card {
+    /* Ensure cards have a minimum height or aspect ratio */
+    height: 400px;                 /* Set a height if necessary */
+}

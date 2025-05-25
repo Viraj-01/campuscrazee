@@ -1,0 +1,83 @@
+/* EventCreationPage.css */
+.event-creation-page {
+    background-color: #808080; /* Light background color */
+    min-height: 100vh; /* Ensure full height */
+    padding: 50px; /* Add padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.event-creation-page h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem; /* Large heading */
+    color: #343a40; /* Dark color for the heading */
+
+}
+
+form {
+    background-color: #C0C0C0; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 30px; /* Internal padding */
+    width: 100%;
+    max-width: 600px; /* Max width for the form */
+}
+
+label {
+    font-weight: bold; /* Bold labels */
+    margin-bottom: 8px; /* Spacing */
+    display: block; /* Labels on new lines */
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside inputs */
+    margin-bottom: 15px; /* Spacing between fields */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 4px; /* Rounded borders */
+    font-size: 1rem; /* Font size for inputs */
+}
+
+textarea {
+    resize: none; /* Prevent resizing */
+    height: 100px; /* Fixed height */
+}
+
+input[type="file"] {
+    margin-bottom: 15px; /* Spacing */
+}
+
+.image-preview {
+    margin-top: 15px; /* Spacing above preview */
+    border: 1px solid #ced4da; /* Border around the preview */
+    border-radius: 4px; /* Rounded corners for preview */
+    overflow: hidden; /* Hide overflow */
+}
+
+.image-preview img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+button[type="submit"] {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text color */
+    padding: 10px 15px; /* Padding around button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 1rem; /* Font size for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Navbar styles to ensure it stays over the content */

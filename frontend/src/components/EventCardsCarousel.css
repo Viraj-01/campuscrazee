@@ -23,6 +23,7 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     background:#F8F8F8;
+    overflow:hidden;
 }
   
 .carousel {
